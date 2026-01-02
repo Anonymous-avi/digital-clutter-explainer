@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Is This Here?</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">WHY IS THIS HERE?</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Understand Your Files.<br><span>Delete Without Fear.</span></h1>
+    <p>
+      Upload your files and get clear explanations, risk scores,  
+      and safe deletion recommendations.
+    </p>
+
+    <div class="upload-card">
+      <input type="file" id="fileInput" multiple />
+      <button id="uploadBtn">Analyze Files</button>
+    </div>
+  </section>
+  <!-- 👇 ADD RESULTS SECTION HERE -->
+<section id="results" class="results hidden">
+  <h2>Analysis Results</h2>
+  <div id="resultsContainer" class="results-container"></div>
+</section>
+
+  <script src="script.js"></script>
+</body>
+</html>
