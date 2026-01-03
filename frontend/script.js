@@ -1,7 +1,13 @@
+
 const uploadBtn = document.getElementById("uploadBtn");
 const fileInput = document.getElementById("fileInput");
 
-uploadBtn.addEventListener("click", async () => {
+const form = document.getElementById("uploadForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();   // ✅ VERY IMPORTANT
+  console.log("Analyze button clicked");
+
   const files = fileInput.files;
 
   if (!files.length) {
@@ -22,9 +28,12 @@ uploadBtn.addEventListener("click", async () => {
     const response = await fetch("http://localhost:5000/upload", {
       method: "POST",
       body: formData,
+
     });
 
     const data = await response.json();
+    console.log("FULL RESPONSE:", data);
+
 
     console.log("Backend response:", data);
 
@@ -34,6 +43,8 @@ const resultsContainer = document.getElementById("resultsContainer");
 resultsContainer.innerHTML = "";
 resultsSection.classList.remove("hidden");
 resultsSection.style.display = "block";
+resultsSection.scrollIntoView({ behavior: "smooth" });
+
 
 console.log("Rendering", data.files.length, "files");
 
@@ -44,7 +55,8 @@ data.files.forEach(file => {
   if (file.recommendation === "Do Not Delete") badgeClass = "danger";
 
   const card = document.createElement("div");
-  card.className = "result-card";
+  card.className = `result-card ${badgeClass}`;
+
 
   card.innerHTML = `
     <div class="file-name">${file.originalName}</div>
@@ -55,6 +67,7 @@ data.files.forEach(file => {
 
   resultsContainer.appendChild(card);
 });
+  
 
 
     
