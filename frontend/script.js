@@ -33,7 +33,7 @@ form.addEventListener("submit", async (e) => {
   formData.append("fileMeta", JSON.stringify(fileMeta));
 
   try {
-    const response = await fetch("http://localhost:5000/upload", {
+    const response = await fetch("https://digital-clutter-explainer.onrender.com/upload", {
       method: "POST",
       body: formData,
 
