@@ -20,9 +20,17 @@ form.addEventListener("submit", async (e) => {
   uploadBtn.disabled = true;
 
   const formData = new FormData();
+  const fileMeta = [];
   for (let file of files) {
     formData.append("files", file);
+    fileMeta.push({
+      name: file.name,
+      lastModified: file.lastModified,
+      size: file.size,
+      type: file.type,
+    });
   }
+  formData.append("fileMeta", JSON.stringify(fileMeta));
 
   try {
     const response = await fetch("http://localhost:5000/upload", {
